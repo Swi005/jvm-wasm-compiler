@@ -6,6 +6,6 @@ public class IDIV implements Instruction
 {
     @Override
     public String getCode() {
-        return "i32.div";
+        return "i32.div_S";
     }
 }

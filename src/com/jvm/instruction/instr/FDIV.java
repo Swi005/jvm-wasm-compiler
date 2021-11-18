@@ -6,6 +6,6 @@ public class FDIV implements Instruction
 {
     @Override
     public String getCode() {
-        return "f32.div";
+        return "f32.div_s";
     }
 }

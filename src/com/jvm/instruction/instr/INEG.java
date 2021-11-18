@@ -6,7 +6,6 @@ public class INEG implements Instruction
 {
     @Override
     public String getCode() {
-        //TODO:THIS https://github.com/WebAssembly/design/issues/379
         return "call $ineg";
     }
 }

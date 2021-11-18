@@ -1,7 +1,11 @@
 package com.jvm.instruction.instrFactory;
 
+import com.jvm.instruction.UNREACHABLE;
 import com.jvm.instruction.instr.*;
+import com.jvm.instruction.intInsn.*;
 import com.wat.instructions.Instruction;
+import com.wat.instructions.Unreachable;
+import org.objectweb.asm.Label;
 import org.objectweb.asm.Opcodes;
 
 public class InstrFactory
@@ -215,5 +219,94 @@ public class InstrFactory
                 return new NOP();
         }
     }
+    public static Instruction intInsnFactory(int OPCODE, int operand)
+    {
+        switch (OPCODE)
+        {
+            case Opcodes.BIPUSH:
+                return new BIPUSH((byte)operand);
+            case Opcodes.SIPUSH:
+                return new SIPUSH((short)operand);
+            case Opcodes.NEWARRAY:
+                return new NEWARRAY(operand);
+            default:
+                throw new IllegalStateException();
+        }
+    }
+    public static Instruction jmpInsnFactory(int OPCODE, Label label) {
+        switch (OPCODE)
+        {
+            case Opcodes.IFEQ://TODO: THIS
+            case Opcodes.IFNE://TODO: THIS
+            case Opcodes.IFLT://TODO: THIS
+            case Opcodes.IFGE://TODO: THIS
+            case Opcodes.IFGT://TODO: THIS
+            case Opcodes.IFLE://TODO: THIS
+            case Opcodes.IF_ICMPEQ://TODO: THIS
+            case Opcodes.IF_ICMPNE://TODO: THIS
+            case Opcodes.IF_ICMPLT://TODO: THIS
+            case Opcodes.IF_ICMPGE://TODO: THIS
+            case Opcodes.IF_ICMPGT://TODO: THIS
+            case Opcodes.IF_ICMPLE://TODO: THIS
+            case Opcodes.IF_ACMPEQ://TODO: THIS
+            case Opcodes.IF_ACMPNE://TODO: THIS
+            case Opcodes.GOTO://TODO: THIS
+            case Opcodes.JSR://TODO: THIS
+            case Opcodes.IFNULL://TODO: THIS
+            case Opcodes.IFNONNULL://TODO: THIS
+            default:
+                return new UNREACHABLE();
+        }
+    }
+    public static Instruction varInsnFactory(int OPCODE, int var)
+    {
+        switch(OPCODE)
+        {
+            case Opcodes.ILOAD://TODO: THIS
+            case Opcodes.LLOAD://TODO: THIS
+            case Opcodes.FLOAD://TODO: THIS
+            case Opcodes.DLOAD://TODO: THIS
+            case Opcodes.ALOAD://TODO: THIS
+            case Opcodes.ISTORE://TODO: THIS
+            case Opcodes.LSTORE://TODO: THIS
+            case Opcodes.FSTORE://TODO: THIS
+            case Opcodes.DSTORE://TODO: THIS
+            case Opcodes.ASTORE://TODO: THIS
+            case Opcodes.RET://TODO: THIS
+            default: return new UNREACHABLE();
 
+        }
+
+    }
+    public static Instruction typeInsnFactory(int OPCODE, String type)
+    {
+        switch(OPCODE){
+            case Opcodes.NEW://TODO:THIS
+            case Opcodes.ANEWARRAY://TODO:THIS
+            case Opcodes.CHECKCAST://TODO:THIS
+            case Opcodes.INSTANCEOF://TODO:THIS
+            default: return new UNREACHABLE();
+        }
+    }
+    public static Instruction fieldInsnFactory(int OPCODE, String name)
+    {
+        switch(OPCODE){
+            case Opcodes.GETSTATIC://TODO:THIS
+            case Opcodes.PUTSTATIC://TODO:THIS
+            case Opcodes.GETFIELD://TODO:THIS
+            case Opcodes.PUTFIELD://TODO:THIS
+            default: return new UNREACHABLE();
+        }
+    }
+    public static Instruction methodCallInsnFactory(int OPCODE, String methodName)
+    {
+        switch (OPCODE){
+            case Opcodes.INVOKEVIRTUAL://TODO: THIS
+            case Opcodes.INVOKESPECIAL://TODO: THIS
+            case Opcodes.INVOKESTATIC://TODO: THIS
+            case Opcodes.INVOKEINTERFACE://TODO: THIS
+            default: return new Unreachable();
+        }
+
+    }
 }

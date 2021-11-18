@@ -180,7 +180,7 @@
                                 call $HEADER_LENGTH
                                 i32.add;;total size of this block
                                 local.get $block
-                                i32.add;;add togeher blocksize + curpos
+                                i32.add;;add together blocksize + curpos
                                 local.get $size
                                 call $new_block;;Make new block with size $size
                                 local.get $block 
@@ -218,7 +218,7 @@
         local.get $pos
         return
     )
-    ;;Free up the memoryblock at position $pos.
+    ;;Free up the memory block at position $pos.
     ;;Params
     ;; 0:Pointer to block
     (func $free (param $pos i32)

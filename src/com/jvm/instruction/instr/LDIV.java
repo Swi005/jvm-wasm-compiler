@@ -6,6 +6,6 @@ public class LDIV implements Instruction
 {
     @Override
     public String getCode() {
-        return "i64.div";
+        return "i64.div_s";
     }
 }
