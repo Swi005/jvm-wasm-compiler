@@ -31,4 +31,24 @@ public class MethodEvaluator extends MethodVisitor
     public void visitInsn(int opcode) {
         instructions.add(InsnFactory.zeroOpFactory(opcode));
     }
+
+    @Override
+    public void visitIntInsn(int opcode, int operand) {
+        instructions.add(InsnFactory.intInsnFactory(opcode,operand));
+    }
+
+    @Override
+    public void visitVarInsn(int opcode, int var) {
+        instructions.add(InsnFactory.varInsnFactory(opcode,var));
+    }
+
+    @Override
+    public void visitFieldInsn(int opcode, String owner, String name, String desc) {
+        instructions.add(InsnFactory.fieldInsnFactory(opcode,name));
+    }
+
+    @Override
+    public void visitJumpInsn(int opcode, Label label) {
+        instructions.add(InsnFactory.jmpInsnFactory(opcode,label));
+    }
 }

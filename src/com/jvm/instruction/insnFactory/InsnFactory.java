@@ -1,9 +1,9 @@
 package com.jvm.instruction.insnFactory;
 
-
+import com.jvm.instruction.fieldInsn.*;
 import com.jvm.instruction.methodCallInsn.INVOKE;
 import com.jvm.instruction.typeInsn.*;
-import com.jvm.instruction.utilInsn.UNREACHABLE;
+import com.jvm.instruction.utilInsn.*;
 import com.jvm.instruction.insn.*;
 import com.jvm.instruction.intInsn.*;
 import com.jvm.instruction.Instruction;
@@ -135,65 +135,65 @@ public class InsnFactory
             case Opcodes.DREM:
                 return new DREM();
             case Opcodes.INEG:
-                //TODO:THIS
+                return new INEG();
             case Opcodes.LNEG:
-                //TODO:THIS
+                return new LNEG();
             case Opcodes.FNEG:
-                //TODO:THIS
+                return new FNEG();
             case Opcodes.DNEG:
-                //TODO:THIS
+                return new DNEG();
             case Opcodes.ISHL:
-                //TODO:THIS
+                return new ISHL();
             case Opcodes.LSHL:
-                //TODO:THIS
+                return new LSHL();
             case Opcodes.ISHR:
-                //TODO:THIS
+                return new ISHR();
             case Opcodes.LSHR:
-                //TODO:THIS
+                return new LSHR();
 
             case Opcodes.IUSHR:
-                //TODO:THIS
+                return new IUSHR();
             case Opcodes.LUSHR:
-                //TODO:THIS
+                return new LUSHR();
             case Opcodes.IAND:
-                //TODO:THIS
+                return new IAND();
             case Opcodes.LAND:
-                //TODO:THIS
+                return new LAND();
             case Opcodes.IOR:
-                //TODO:THIS
+                return new IOR();
             case Opcodes.LOR:
-                //TODO:THIS
+                return new LOR();
             case Opcodes.IXOR:
-                //TODO:THIS
+                return new IXOR();
             case Opcodes.LXOR:
-                //TODO:THIS
+                return new LXOR();
             case Opcodes.I2L:
-                //TODO:THIS
+                return new I2L();
             case Opcodes.I2F:
-                //TODO:THIS
+                return new I2F();
             case Opcodes.I2D:
-                //TODO:THIS
+                return new I2D();
 
             case Opcodes.L2I:
-                //TODO:THIS
+                return new L2I();
             case Opcodes.L2F:
-                //TODO:THIS
+                return new L2F();
             case Opcodes.L2D:
-                //TODO:THIS
+                return new L2D();
             case Opcodes.F2I:
-                //TODO:THIS
+                return new F2I();
             case Opcodes.F2L:
-                //TODO:THIS
+                return new F2L();
             case Opcodes.F2D:
-                //TODO:THIS
+                return new F2D();
             case Opcodes.D2I:
-                //TODO:THIS
+                return new D2I();
             case Opcodes.D2L:
-                //TODO:THIS
+                return new D2L();
             case Opcodes.D2F:
-                //TODO:THIS
+                return new D2F();
             case Opcodes.I2B:
-                //TODO:THIS
+                return new I2B();//TODO: THIS
             case Opcodes.I2C:
                 //TODO:THIS
             case Opcodes.I2S:
@@ -215,9 +215,6 @@ public class InsnFactory
             case Opcodes.RETURN://TODO:THIS
             case Opcodes.ARRAYLENGTH://TODO:THIS
             case Opcodes.ATHROW://TODO:THIS
-            case Opcodes.MONITORENTER://TODO:THIS
-
-            case Opcodes.MONITOREXIT://TODO:THIS
             default:
                 System.err.println("ERROR: OPCODE: " + OPCODE +" IS NOT A ZERO OP INSTRUCTION");
             throw new IllegalStateException();
@@ -294,7 +291,8 @@ public class InsnFactory
             case Opcodes.DSTORE://TODO: THIS
             case Opcodes.ASTORE://TODO: THIS
             case Opcodes.RET://TODO: THIS
-            default: return new UNREACHABLE();
+            default: System.err.println("ERROR: OPCODE: " + OPCODE +" IS NOT A VARIABLE INSTRUCTION");
+            throw new IllegalStateException();
 
         }
 
@@ -303,22 +301,26 @@ public class InsnFactory
     {
         switch(OPCODE){
             case Opcodes.NEW://TODO:THIS
-            case Opcodes.ANEWARRAY://TODO:THIS
+            case Opcodes.ANEWARRAY:
                 return new ANEWARRAY(type);
             case Opcodes.CHECKCAST://TODO:THIS
             case Opcodes.INSTANCEOF:
                 return new INSTANCEOF(type);
-            default: return new UNREACHABLE();
+            default: System.err.println("ERROR: OPCODE: " + OPCODE +" IS NOT A TYPE INSTRUCTION");
+            throw new IllegalStateException();
         }
     }
     public static Instruction fieldInsnFactory(int OPCODE, String name)
     {
         switch(OPCODE){
-            case Opcodes.GETSTATIC://TODO:THIS
-            case Opcodes.PUTSTATIC://TODO:THIS
+            case Opcodes.GETSTATIC:
+                return new GETSTATIC(name);
+            case Opcodes.PUTSTATIC:
+                return new PUTSTATIC(name);
             case Opcodes.GETFIELD://TODO:THIS
             case Opcodes.PUTFIELD://TODO:THIS
-            default: return new UNREACHABLE();
+            default: System.err.println("ERROR: OPCODE: " + OPCODE +" IS NOT A FIELD INSTRUCTION");
+            throw new IllegalStateException();
         }
     }
     public static Instruction methodCallInsnFactory(int OPCODE, String methodName)

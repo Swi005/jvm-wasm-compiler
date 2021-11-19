@@ -25,6 +25,15 @@
         return
     )
     (export "ineg" (func $ineg))
+    (func $lneg (param i64) (result i64)
+        local.get 0
+        i64.const -1
+        i64.xor
+        return
+    )
+    (export "lneg" (func $lneg))
+    
+
     (func $i32_dup (param i32) (result i32) (result i32)
         local.get 0
         local.get 0
