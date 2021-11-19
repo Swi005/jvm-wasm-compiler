@@ -1,6 +1,6 @@
 package com.structures;
 
-import com.wat.instructions.WasmType;
+import com.jvm.instruction.WasmType;
 import java.util.List;
 
 /**

@@ -1,6 +1,6 @@
 package com.jvm.instruction.intInsn;
 
-import com.wat.instructions.Instruction;
+import com.jvm.instruction.Instruction;
 import org.objectweb.asm.Opcodes;
 
 public class NEWARRAY implements Instruction

@@ -1,6 +1,10 @@
 package com.visitor;
 
-import com.wat.instructions.Instruction;
+import com.jvm.instruction.Instruction;
+import com.jvm.instruction.insnFactory.InsnFactory;
+import com.jvm.instruction.utilInsn.BLOCK;
+import com.jvm.instruction.utilInsn.END;
+import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 
 import java.util.ArrayList;
@@ -13,4 +17,18 @@ public class MethodEvaluator extends MethodVisitor
     }
 
     List<Instruction> instructions = new ArrayList<>();
+    private Label lastLabel = null;
+
+    @Override
+    public void visitLabel(Label label) {
+        if(lastLabel != null)
+            instructions.add(new END());//End previous block
+        instructions.add(new BLOCK(label.toString()));
+        lastLabel = label;
+    }
+
+    @Override
+    public void visitInsn(int opcode) {
+        instructions.add(InsnFactory.zeroOpFactory(opcode));
+    }
 }

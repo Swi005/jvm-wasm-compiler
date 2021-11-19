@@ -2,7 +2,7 @@ package com.structures;
 
 import org.junit.jupiter.api.Test;
 
-import com.wat.instructions.WasmType;
+import com.jvm.instruction.WasmType;
 import java.util.ArrayList;
 import java.util.List;
 

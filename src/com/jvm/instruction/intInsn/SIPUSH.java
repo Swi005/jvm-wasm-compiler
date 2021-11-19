@@ -1,6 +1,6 @@
 package com.jvm.instruction.intInsn;
 
-import com.wat.instructions.Instruction;
+import com.jvm.instruction.Instruction;
 
 public class SIPUSH implements Instruction {
 
