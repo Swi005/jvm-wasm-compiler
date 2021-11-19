@@ -1,6 +1,8 @@
 package com.jvm.instruction.insnFactory;
 
 
+import com.jvm.instruction.methodCallInsn.INVOKE;
+import com.jvm.instruction.typeInsn.*;
 import com.jvm.instruction.utilInsn.UNREACHABLE;
 import com.jvm.instruction.insn.*;
 import com.jvm.instruction.intInsn.*;
@@ -236,7 +238,8 @@ public class InsnFactory
             throw new IllegalStateException();
         }
     }
-    public static Instruction jmpInsnFactory(int OPCODE, Label label) {
+    public static Instruction jmpInsnFactory(int OPCODE, Label label)
+    {
         switch (OPCODE)
         {
             case Opcodes.IFEQ:
@@ -301,8 +304,10 @@ public class InsnFactory
         switch(OPCODE){
             case Opcodes.NEW://TODO:THIS
             case Opcodes.ANEWARRAY://TODO:THIS
+                return new ANEWARRAY(type);
             case Opcodes.CHECKCAST://TODO:THIS
-            case Opcodes.INSTANCEOF://TODO:THIS
+            case Opcodes.INSTANCEOF:
+                return new INSTANCEOF(type);
             default: return new UNREACHABLE();
         }
     }
@@ -319,12 +324,13 @@ public class InsnFactory
     public static Instruction methodCallInsnFactory(int OPCODE, String methodName)
     {
         switch (OPCODE){
-            case Opcodes.INVOKEVIRTUAL://TODO: THIS
-            case Opcodes.INVOKESPECIAL://TODO: THIS
-            case Opcodes.INVOKESTATIC://TODO: THIS
-            case Opcodes.INVOKEINTERFACE://TODO: THIS
-            default: return new UNREACHABLE();
+            case Opcodes.INVOKEVIRTUAL:
+            case Opcodes.INVOKESPECIAL:
+            case Opcodes.INVOKESTATIC:
+            case Opcodes.INVOKEINTERFACE:
+                return new INVOKE(methodName);
+            default: System.err.println("ERROR: OPCODE: " + OPCODE +" IS NOT A METHOD CALL INSTRUCTION");
+            throw new IllegalStateException();
         }
-
     }
 }
