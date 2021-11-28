@@ -1,13 +1,17 @@
-package com.jvm.instruction.insnFactory;
+package com.jvm.instruction;
 
-import com.jvm.instruction.fieldInsn.*;
-import com.jvm.instruction.methodCallInsn.INVOKE;
-import com.jvm.instruction.typeInsn.*;
-import com.jvm.instruction.utilInsn.*;
+import com.jvm.instruction.fieldInsn.GETSTATIC;
+import com.jvm.instruction.fieldInsn.PUTSTATIC;
 import com.jvm.instruction.insn.*;
-import com.jvm.instruction.intInsn.*;
-import com.jvm.instruction.Instruction;
+import com.jvm.instruction.intInsn.BIPUSH;
+import com.jvm.instruction.intInsn.NEWARRAY;
+import com.jvm.instruction.intInsn.SIPUSH;
 import com.jvm.instruction.jmpInsn.*;
+import com.jvm.instruction.methodCallInsn.INVOKE;
+import com.jvm.instruction.typeInsn.ANEWARRAY;
+import com.jvm.instruction.typeInsn.INSTANCEOF;
+import com.jvm.instruction.utilInsn.UNREACHABLE;
+import com.jvm.instruction.varInsn.*;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.Opcodes;
 
@@ -193,28 +197,31 @@ public class InsnFactory
             case Opcodes.D2F:
                 return new D2F();
             case Opcodes.I2B:
-                return new I2B();//TODO: THIS
             case Opcodes.I2C:
-                //TODO:THIS
             case Opcodes.I2S:
-                //TODO:THIS
+                return new NOP();
 
             case Opcodes.LCMP:
-                //TODO:THIS
+                return new LCMP();
             case Opcodes.FCMPL:
-                //TODO:THIS
-            case Opcodes.FCMPG://TODO:THIS
-            case Opcodes.DCMPL://TODO:THIS
-            case Opcodes.DCMPG://TODO:THIS
-            case Opcodes.IRETURN://TODO:THIS
-            case Opcodes.LRETURN://TODO:THIS
-            case Opcodes.FRETURN://TODO:THIS
-
-            case Opcodes.DRETURN://TODO:THIS
-            case Opcodes.ARETURN://TODO:THIS
-            case Opcodes.RETURN://TODO:THIS
-            case Opcodes.ARRAYLENGTH://TODO:THIS
-            case Opcodes.ATHROW://TODO:THIS
+                return new FCMPL();
+            case Opcodes.FCMPG:
+                return new FCMPG();
+            case Opcodes.DCMPL:
+                return new DCMPL();
+            case Opcodes.DCMPG:
+                return new DCMPG();
+            case Opcodes.IRETURN:
+            case Opcodes.LRETURN:
+            case Opcodes.FRETURN:
+            case Opcodes.DRETURN:
+            case Opcodes.ARETURN:
+            case Opcodes.RETURN:
+                return new RETURN();
+            case Opcodes.ARRAYLENGTH:
+                return new ARRAYLENGTH();
+            case Opcodes.ATHROW:
+                return new UNREACHABLE();
             default:
                 System.err.println("ERROR: OPCODE: " + OPCODE +" IS NOT A ZERO OP INSTRUCTION");
             throw new IllegalStateException();
@@ -280,17 +287,19 @@ public class InsnFactory
     {
         switch(OPCODE)
         {
-            case Opcodes.ILOAD://TODO: THIS
-            case Opcodes.LLOAD://TODO: THIS
-            case Opcodes.FLOAD://TODO: THIS
-            case Opcodes.DLOAD://TODO: THIS
-            case Opcodes.ALOAD://TODO: THIS
-            case Opcodes.ISTORE://TODO: THIS
-            case Opcodes.LSTORE://TODO: THIS
-            case Opcodes.FSTORE://TODO: THIS
-            case Opcodes.DSTORE://TODO: THIS
-            case Opcodes.ASTORE://TODO: THIS
-            case Opcodes.RET://TODO: THIS
+            case Opcodes.ILOAD:
+            case Opcodes.LLOAD:
+            case Opcodes.FLOAD:
+            case Opcodes.DLOAD:
+            case Opcodes.ALOAD:
+                return new LOAD(var);
+            case Opcodes.ISTORE:
+            case Opcodes.LSTORE:
+            case Opcodes.FSTORE:
+            case Opcodes.DSTORE:
+            case Opcodes.ASTORE:
+                return new STORE(var);
+            case Opcodes.RET:
             default: System.err.println("ERROR: OPCODE: " + OPCODE +" IS NOT A VARIABLE INSTRUCTION");
             throw new IllegalStateException();
 

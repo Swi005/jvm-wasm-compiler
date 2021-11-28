@@ -23,14 +23,33 @@
     (import "malloc" "read_f64" (func $read_f64 (param i32) (result f64)))
     (import "malloc" "write_f64" (func $write_f64 (param i32) (param f64)))
     
+
+
+;;-----------------------ARRAY UTILS---------------------------------------------;;
+
+    ;;Gets size of array
+    ;;Params:
+    ;; 0:location of array
+    ;; Return: num of elems in the array
+    (func $array_size (param i32) (result i32)
+        local.get 0
+        call $read_i32
+        return
+    )
 ;;----------------------BYTE ARRAYS------------------------------------------------;;    
     ;;Makes a new byte array
     ;;Params:
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_byte_array(param i32)(result i32)
+        (local i32 $tmp)
         local.get 0;;push arg 0 to stack
+        i32.const 4;;Add header
+        i32.add
         call $malloc ;;allocate memory
+        local.tee $tmp;;set 
+        local.get 0
+        call $write_i32
         return  ;;return pointer 
     )
     (export "new_byte_array" (func $new_byte_array))
@@ -42,6 +61,8 @@
     (func $get_elem_from_byte_array (param i32) (param i32) (result i32)
         local.get 0
         local.get 1
+        i32.const 4;;Header offset
+        i32.add
         i32.add
         call $read_byte
         return
@@ -55,6 +76,8 @@
     (func $set_elem_from_byte_array (param i32) (param i32) (param i32)
         local.get 0
         local.get 1
+        i32.const 4;;Header offset
+        i32.add
         i32.add
         local.get 2
         call $write_byte
@@ -67,10 +90,16 @@
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_i32_array(param i32)(result i32)
+    (local i32 $tmp)
         local.get 0;;push arg 0 to stack
         i32.const 4;;length of an i32
         i32.mul;;multiplt to get real needed size
+        i32.const 4;;Add header
+        i32.add
         call $malloc ;;allocate memory
+        local.tee $tmp;;set 
+        local.get 0
+        call $write_i32
         return  ;;return pointer 
     )
     (export "new_i32_array" (func $new_i32_array))
@@ -111,10 +140,16 @@
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_i64_array(param i32)(result i32)
+        (local i32 $tmp)
         local.get 0;;push arg 0 to stack
-        i32.const 8;;length of an i32
+        i32.const 8;;length of an i64
         i32.mul;;multiplt to get real needed size
+        i32.const 4;;Add header
+        i32.add
         call $malloc ;;allocate memory
+        local.tee $tmp;;set 
+        local.get 0
+        call $write_i32
         return  ;;return pointer 
     )
     (export "new_i64_array" (func $new_i64_array))
@@ -156,10 +191,16 @@
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_f32_array(param i32)(result i32)
+        (local i32 $tmp)
         local.get 0;;push arg 0 to stack
         i32.const 4;;length of an f32
         i32.mul;;multiplt to get real needed size
+        i32.const 4;;Add header
+        i32.add
         call $malloc ;;allocate memory
+        local.tee $tmp;;set 
+        local.get 0
+        call $write_i32
         return  ;;return pointer 
     )
     (export "new_f32_array" (func $new_f32_array))
@@ -200,10 +241,16 @@
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_f64_array(param i32)(result i32)
+        (local i32 $tmp)
         local.get 0;;push arg 0 to stack
-        i32.const 8;;length of an f32
+        i32.const 8;;length of an f64
         i32.mul;;multiplt to get real needed size
+        i32.const 4;;Add header
+        i32.add
         call $malloc ;;allocate memory
+        local.tee $tmp;;set 
+        local.get 0
+        call $write_i32
         return  ;;return pointer 
     )
     (export "new_f64_array" (func $new_f64_array))

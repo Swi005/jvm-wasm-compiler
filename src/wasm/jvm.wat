@@ -39,6 +39,7 @@
         local.get 0
         return
     )
+    (export "i32_dup" (func $i32_dup))
     (func $f32_dup (param f32) (result f32) (result f32)
         local.get 0
         local.get 0
@@ -64,4 +65,33 @@
         return
     )
     (export "i64_dup" (func $i64_dup))
+
+    ;;push 0 if the two longs are the same, 1 if value1 is greater than value2, -1 otherwise
+    (func $LCMP (param i64) (param i64) (result i32)
+        local.get 0
+        local.get 1
+        i64.eq
+        (if
+            (then
+                i32.const 0
+                return
+            )
+            (else
+                local.get 0
+                local.get 1
+                i64.gt_s
+                (if
+                    (then 
+                        i32.const 1
+                        return
+                    )
+                    (else
+                        i32.const -1
+                        return
+                    )
+                )
+            )
+        )
+    )
+    (export "LCMP" (func $LCMP))
 )

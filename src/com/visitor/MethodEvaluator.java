@@ -1,7 +1,7 @@
 package com.visitor;
 
 import com.jvm.instruction.Instruction;
-import com.jvm.instruction.insnFactory.InsnFactory;
+import com.jvm.instruction.InsnFactory;
 import com.jvm.instruction.utilInsn.BLOCK;
 import com.jvm.instruction.utilInsn.END;
 import org.objectweb.asm.Label;
