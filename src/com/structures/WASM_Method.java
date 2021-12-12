@@ -1,6 +1,9 @@
 package com.structures;
 
+import com.jvm.instruction.Instruction;
 import com.jvm.instruction.WasmType;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,12 +11,13 @@ import java.util.List;
  */
 public class WASM_Method
 {
-    boolean isStatic;
-    boolean isPublic;
-    String name;
-    List<WasmType> localVars; //Locals
-    List<WasmType> params; //Func params
-    WasmType returnType; //return type
+    public boolean isStatic;
+    public boolean isPublic;
+    public String name;
+    public List<WasmType> localVars; //Locals
+    public List<WasmType> params; //Func params
+    public WasmType returnType; //return type
+    public List<Instruction> instructions = new ArrayList<>();
 
     private String header()
     {

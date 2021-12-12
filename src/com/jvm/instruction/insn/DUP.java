@@ -4,7 +4,7 @@ import com.jvm.instruction.Instruction;
 
 public class DUP implements Instruction
 {
-    private int tp;
+    private final int tp;
     public DUP(int tp)
     {
         //TODO:NEED TO FIGURE OUT THE TYPE

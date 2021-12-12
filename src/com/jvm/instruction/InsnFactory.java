@@ -344,4 +344,18 @@ public class InsnFactory
             throw new IllegalStateException();
         }
     }
+    public static Instruction LdcInsnFactory(Object value)
+    {
+        if(value instanceof Integer)
+            return new ICONST_n((Integer) value);
+        if(value instanceof Float)
+            return new FCONST_n((Float) value);
+        if(value instanceof Long)
+            return new LCONST_n((Long) value);
+        if(value instanceof Double)
+            return new DCONST_n((Double) value);
+        if(value instanceof String)
+            throw new IllegalArgumentException("Error, strings are not implemented yet");
+        throw new IllegalStateException();
+    }
 }
