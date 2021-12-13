@@ -40,9 +40,8 @@ public class WASM_Class
         return c;
     }
 
-    public List<WASM_Method> generateFieldAccess()
+    public void generateFieldAccess()
     {
-        List<WASM_Method> fieldAccess = new ArrayList<>();
         //GENERATE GETTERS AND SETTERS FOR ALL FIELDS
         for (String str: fields.keySet()) {
             //GETTER
@@ -52,7 +51,7 @@ public class WASM_Class
             get.params.add(WasmType.i32);
             get.returnType = fields.get(str);
             get.instructions.add(new READ("local.get 0",get.returnType));
-            fieldAccess.add(get);
+            methods.add(get);
 
             //SETTER
             WASM_Method set = new WASM_Method();
@@ -61,9 +60,8 @@ public class WASM_Class
             set.params.add(WasmType.i32);
             set.params.add( fields.get(str));
             set.instructions.add(new WRITE("local.get 0", fields.get(str),"local.get 1"));
-            fieldAccess.add(get);
+            methods.add(get);
         }
-        return fieldAccess;
     }
     public WASM_Method generateConstructor()
     {

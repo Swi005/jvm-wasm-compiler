@@ -5,6 +5,7 @@ import com.jvm.instruction.WasmType;
 import com.jvm.instruction.utilInsn.BLOCK;
 import com.jvm.instruction.utilInsn.END;
 import com.structures.WASM_Method;
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
@@ -30,9 +31,20 @@ public class MethodEvaluator
      */
     private void evalAnnotation()
     {
-        //TODO: evalAnnotation
+        switch (node.access)
+        {
+            case Opcodes.ACC_STATIC:
+                method.isStatic = true;
+            case Opcodes.ACC_PRIVATE:
+                method.isStatic = false;
+            default:
+                return;
+        }
     }
 
+    /**
+     * Evaluate the instructions
+     */
     private void evalInstructions()
     {
         LabelNode last = null;
@@ -93,11 +105,13 @@ public class MethodEvaluator
         }
     }
 
+    /**
+     * Eval vars
+     */
     private void evalVars()
     {
         for (int i = 0; i < node.parameters.size(); i++) {
             ParameterNode n = (ParameterNode) node.parameters.get(i);
-            //TODO: Figure out params
         }
         for (int i = 0; i < node.localVariables.size(); i++) {
             LocalVariableNode n = (LocalVariableNode) node.localVariables.get(i);
@@ -105,6 +119,10 @@ public class MethodEvaluator
         }
     }
 
+    /**
+     * Return the method
+     * @return
+     */
     public WASM_Method getMethod()
     {
         return method;
