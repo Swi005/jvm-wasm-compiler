@@ -2,6 +2,8 @@ package com.structures;
 
 import com.jvm.instruction.WasmType;
 import com.jvm.instruction.utilInsn.MallocWrapper;
+import com.jvm.instruction.utilInsn.READ;
+import com.jvm.instruction.utilInsn.WRITE;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -41,11 +43,27 @@ public class WASM_Class
     public List<WASM_Method> generateFieldAccess()
     {
         List<WASM_Method> fieldAccess = new ArrayList<>();
+        //GENERATE GETTERS AND SETTERS FOR ALL FIELDS
         for (String str: fields.keySet()) {
-            WASM_Method m = new WASM_Method();
-            m.name = str.
+            //GETTER
+            WASM_Method get = new WASM_Method();
+            get.isPublic = true;
+            get.name = className+"_get_"+str;
+            get.params.add(WasmType.i32);
+            get.returnType = fields.get(str);
+            get.instructions.add(new READ("local.get 0",get.returnType));
+            fieldAccess.add(get);
+
+            //SETTER
+            WASM_Method set = new WASM_Method();
+            set.name = className+"_set_"+str;
+            get.isPublic = true;
+            set.params.add(WasmType.i32);
+            set.params.add( fields.get(str));
+            set.instructions.add(new WRITE("local.get 0", fields.get(str),"local.get 1"));
+            fieldAccess.add(get);
         }
-        return null;
+        return fieldAccess;
     }
     public WASM_Method generateConstructor()
     {
