@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class WASM_Method
 {
-    public boolean isStatic;
-    public boolean isPublic;
+    public boolean isStatic = false;
+    public boolean isPublic = true;
     public String name;
     public List<WasmType> localVars; //Locals
     public List<WasmType> params; //Func params

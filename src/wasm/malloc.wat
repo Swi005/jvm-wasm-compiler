@@ -200,7 +200,7 @@
     ;;Params:
     ;; 0: Block pointer
     ;; Returns: pointer to next block
-    (func $malloc (param i32)  (result i32)
+    (func $malloc (param i32) (result i32)
         call $START_BLOCK
         local.get 0
         call $__malloc__
