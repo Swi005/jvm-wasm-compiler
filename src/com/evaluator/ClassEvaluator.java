@@ -11,7 +11,6 @@ import java.util.List;
 
 public class ClassEvaluator
 {
-    List<WASM_Method> methodEvals = new ArrayList<>();
     WASM_Class wasm_class;
     ClassNode node;
 
@@ -38,7 +37,7 @@ public class ClassEvaluator
     private void evalMethods() {
         for (int i = 0; i < node.methods.size(); i++) {
             MethodEvaluator eval = new MethodEvaluator((MethodNode)node.methods.get(i));
-            methodEvals.add(eval.getMethod());
+            wasm_class.methods.add(eval.getMethod());
         }
     }
 
@@ -46,7 +45,7 @@ public class ClassEvaluator
     {
         for (int i=0; i< node.fields.size(); i++)
         {
-            FieldNode fn = (FieldNode)node.fields.get(i);//WTF?
+            FieldNode fn = (FieldNode)node.fields.get(i);//WTF? casting b wild
             wasm_class.fields.put(fn.name, WasmType.fromType(Type.getType(fn.desc)));
         }
     }

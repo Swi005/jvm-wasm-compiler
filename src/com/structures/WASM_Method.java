@@ -14,8 +14,8 @@ public class WASM_Method
     public boolean isStatic = false;
     public boolean isPublic = true;
     public String name;
-    public List<WasmType> localVars; //Locals
-    public List<WasmType> params; //Func params
+    public List<WasmType> localVars = new ArrayList<>(); //Locals
+    public List<WasmType> params = new ArrayList<>(); //Func params
     public WasmType returnType; //return type
     public List<Instruction> instructions = new ArrayList<>();
 

@@ -11,9 +11,9 @@ import java.util.List;
 
 public class WASM_Class
 {
-    public List<WASM_Method> methods;
+    public List<WASM_Method> methods = new ArrayList<>();
     public String className;
-    public LinkedHashMap<String, WasmType> fields;
+    public LinkedHashMap<String, WasmType> fields = new LinkedHashMap<>();
     public boolean isStatic = false;
 
     public int calculateOffset(String key)

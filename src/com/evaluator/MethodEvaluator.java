@@ -110,13 +110,16 @@ public class MethodEvaluator
      */
     private void evalVars()
     {
-        for (int i = 0; i < node.parameters.size(); i++) {
-            ParameterNode n = (ParameterNode) node.parameters.get(i);
-        }
-        for (int i = 0; i < node.localVariables.size(); i++) {
-            LocalVariableNode n = (LocalVariableNode) node.localVariables.get(i);
-            method.params.add(WasmType.fromType(Type.getType(n.desc)));
-        }
+        if(node.parameters != null)
+            for (int i = 0; i < node.parameters.size(); i++) {
+                ParameterNode n = (ParameterNode) node.parameters.get(i);
+                //TODO: Params
+            }
+        if(node.localVariables != null)
+            for (int i = 0; i < node.localVariables.size(); i++) {
+                LocalVariableNode n = (LocalVariableNode) node.localVariables.get(i);
+                method.localVars.add(WasmType.fromType(Type.getType(n.desc)));
+            }
     }
 
     /**
