@@ -9,7 +9,7 @@ public class DCONST_n implements Instruction {
         this.n = n;
     }
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "f64.const " +n;
     }
 }

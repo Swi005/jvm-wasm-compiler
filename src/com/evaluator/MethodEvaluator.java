@@ -55,12 +55,12 @@ public class MethodEvaluator
             if( n instanceof IntInsnNode) {
                 IntInsnNode m = (IntInsnNode) n;
                 method.instructions.add(InsnFactory.intInsnFactory(m.getOpcode(),m.operand));
-                break;
+                continue;
             }
             if( n instanceof JumpInsnNode) {
                 JumpInsnNode m = (JumpInsnNode) n;
                 method.instructions.add(InsnFactory.jmpInsnFactory(m.getOpcode(),m.label.getLabel()));
-                break;
+                continue;
             }
             if( n instanceof LdcInsnNode) {
                 LdcInsnNode m = (LdcInsnNode) n;
@@ -70,27 +70,27 @@ public class MethodEvaluator
             if( n instanceof MethodInsnNode) {
                 MethodInsnNode m = (MethodInsnNode) n;
                 method.instructions.add(InsnFactory.methodCallInsnFactory(m.getOpcode(), m.name));
-                break;
+                continue;
             }
             if( n instanceof InsnNode) {
                 InsnNode m = (InsnNode) n;
                 method.instructions.add(InsnFactory.zeroOpFactory(m.getOpcode()));
-                break;
+                continue;
             }
             if( n instanceof VarInsnNode) {
                 VarInsnNode m = (VarInsnNode) n;
                 method.instructions.add(InsnFactory.varInsnFactory(m.getOpcode(),m.var));
-                break;
+                continue;
             }
             if( n instanceof TypeInsnNode) {
                 TypeInsnNode m = (TypeInsnNode) n;
                 method.instructions.add(InsnFactory.typeInsnFactory(m.getOpcode(),m.desc));
-                break;
+                continue;
             }
             if( n instanceof FieldInsnNode) {
                 FieldInsnNode m = (FieldInsnNode) n;
                 method.instructions.add(InsnFactory.fieldInsnFactory(m.getOpcode(),m.name));
-                break;
+                continue;
             }
             if( n instanceof LabelNode) {
                 LabelNode m = (LabelNode) n;
@@ -101,7 +101,7 @@ public class MethodEvaluator
 
                 method.instructions.add(new BLOCK(m.getLabel().toString()));
                 last = m;
-                break;
+                continue;
             }
         }
     }

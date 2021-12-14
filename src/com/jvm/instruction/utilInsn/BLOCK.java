@@ -11,7 +11,7 @@ public class BLOCK implements Instruction
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "block $"+name;
     }
 }

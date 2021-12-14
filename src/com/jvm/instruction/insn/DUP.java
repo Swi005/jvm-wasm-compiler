@@ -11,7 +11,7 @@ public class DUP implements Instruction
         this.tp = tp;
     }
     @Override
-    public String getCode() {
+    public String getWAT() {
         //IDEA! Check stack for what the top val is and call relevant value is
 
         return null;//TODO: WHAT DO HERE

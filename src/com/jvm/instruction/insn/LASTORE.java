@@ -5,7 +5,7 @@ import com.jvm.instruction.Instruction;
 public class LASTORE implements Instruction
 {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "call $set_elem_from_i64_array";
     }
 }

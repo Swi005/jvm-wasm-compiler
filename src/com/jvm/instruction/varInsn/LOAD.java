@@ -11,7 +11,7 @@ public class LOAD implements Instruction
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "local.get " + varIndex;
     }
 }

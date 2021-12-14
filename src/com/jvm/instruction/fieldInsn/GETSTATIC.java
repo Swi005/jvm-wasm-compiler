@@ -11,7 +11,7 @@ public class GETSTATIC implements Instruction
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "global.get $"+name;
     }
 }

@@ -5,7 +5,7 @@ import com.jvm.instruction.Instruction;
 public class FSUB implements Instruction
 {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "F32.sub";
     }
 }

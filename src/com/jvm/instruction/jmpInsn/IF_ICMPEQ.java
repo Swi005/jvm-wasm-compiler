@@ -11,7 +11,7 @@ public class IF_ICMPEQ implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.eq \n br_if $" + label.toString();
     }
 }

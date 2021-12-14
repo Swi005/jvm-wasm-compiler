@@ -10,7 +10,7 @@ public class ANEWARRAY implements Instruction
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "call $new_i32_array";
     }
 }

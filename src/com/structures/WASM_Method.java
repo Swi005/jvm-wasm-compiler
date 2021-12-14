@@ -42,7 +42,10 @@ public class WASM_Method
     public String toWAT()
     {
         StringBuilder str = new StringBuilder(this.header());
-            //instructions
+
+        for (Instruction i: instructions) {
+            str.append(i.getWAT()+"\n");
+        }
         str.append(")\n");
         if(isPublic)
             str.append("(export \"").append(name).append("\" (func $").append(name).append("))\n");

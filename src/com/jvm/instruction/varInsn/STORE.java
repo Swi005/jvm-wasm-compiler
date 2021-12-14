@@ -10,7 +10,7 @@ public class STORE implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "local.set "+varIndex;
     }
 }

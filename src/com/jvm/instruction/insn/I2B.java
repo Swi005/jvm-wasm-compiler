@@ -4,7 +4,7 @@ import com.jvm.instruction.Instruction;
 
 public class I2B implements Instruction {
     @Override
-    public String getCode()
+    public String getWAT()
     {
         return "nop";
     }

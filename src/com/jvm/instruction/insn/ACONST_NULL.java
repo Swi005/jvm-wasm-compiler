@@ -5,7 +5,7 @@ import com.jvm.instruction.Instruction;
 public class ACONST_NULL implements Instruction
 {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.const 0";
     }
 }

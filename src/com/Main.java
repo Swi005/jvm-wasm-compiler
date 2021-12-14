@@ -22,6 +22,7 @@ public class Main
             WASM_Class c = eval.get_Class();
             //print the class + methods
             File f = new File("bin/test.wat");
+            f.delete();
             f.createNewFile();
             WASM_Writer writer = new WASM_Writer(f, c);
             writer.write();

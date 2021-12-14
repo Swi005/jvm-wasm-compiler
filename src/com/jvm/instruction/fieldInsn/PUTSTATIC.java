@@ -10,7 +10,7 @@ public class PUTSTATIC implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "global.set $"+name;
     }
 }

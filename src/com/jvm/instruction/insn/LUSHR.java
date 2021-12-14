@@ -4,7 +4,7 @@ import com.jvm.instruction.Instruction;
 
 public class LUSHR implements Instruction {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i64.shr_u";
     }
 }

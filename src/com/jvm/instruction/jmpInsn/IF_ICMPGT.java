@@ -11,7 +11,7 @@ public class IF_ICMPGT implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.gt_s \n br_if $" + label.toString();
     }
 }

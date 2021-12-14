@@ -4,7 +4,7 @@ import com.jvm.instruction.Instruction;
 
 public class IOR implements Instruction {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.OR";
     }
 }

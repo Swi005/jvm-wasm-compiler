@@ -12,7 +12,7 @@ public class INSTANCEOF implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.const "+tpID +" \n i32.eq";
     }
 }

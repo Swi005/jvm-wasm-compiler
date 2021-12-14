@@ -5,7 +5,7 @@ import com.jvm.instruction.Instruction;
 public class IDIV implements Instruction
 {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.div_S";
     }
 }

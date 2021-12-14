@@ -11,7 +11,7 @@ public class NEWARRAY implements Instruction
         this.type = type;
     }
     @Override
-    public String getCode() {
+    public String getWAT() {
         switch (type)
         {
             case Opcodes.T_CHAR:

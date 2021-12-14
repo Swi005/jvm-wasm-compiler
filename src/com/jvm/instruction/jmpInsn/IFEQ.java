@@ -11,7 +11,7 @@ public class IFEQ implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.eqz \n br_if $" + label.toString();
     }
 }

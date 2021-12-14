@@ -5,7 +5,7 @@ import com.jvm.instruction.Instruction;
 public class DREM implements Instruction
 {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "f64.rem";
     }
 }

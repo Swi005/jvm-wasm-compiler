@@ -10,7 +10,7 @@ public class SIPUSH implements Instruction {
         this.b = b;
     }
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.const "+ b;
     }
 }

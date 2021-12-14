@@ -11,7 +11,7 @@ public class IF_ICMPNE implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.ne \n br_if $" + label.toString();
     }
 }

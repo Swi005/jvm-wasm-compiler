@@ -5,7 +5,7 @@ import com.jvm.instruction.Instruction;
 public class NOP implements Instruction
 {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "nop";
     }
 }

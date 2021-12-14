@@ -10,7 +10,7 @@ public class ICONST_n implements Instruction {
         this.n = n;
     }
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.const " +n;
     }
 }

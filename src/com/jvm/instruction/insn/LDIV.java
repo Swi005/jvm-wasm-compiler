@@ -5,7 +5,7 @@ import com.jvm.instruction.Instruction;
 public class LDIV implements Instruction
 {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i64.div_s";
     }
 }

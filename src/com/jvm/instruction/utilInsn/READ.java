@@ -14,7 +14,7 @@ public class READ implements Instruction
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         switch (tp)
         {
             case i32:

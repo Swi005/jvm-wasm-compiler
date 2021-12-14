@@ -4,7 +4,7 @@ import com.jvm.instruction.Instruction;
 
 public class ARRAYLENGTH implements Instruction {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "call $array_size";
     }
 }

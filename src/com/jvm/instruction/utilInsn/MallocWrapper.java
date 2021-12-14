@@ -12,7 +12,7 @@ public class MallocWrapper implements Instruction
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         if(isFree)
             return "(call $free (i32.const "+ i+"))";
         else

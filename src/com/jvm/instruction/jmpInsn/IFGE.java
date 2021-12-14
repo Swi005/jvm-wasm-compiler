@@ -11,7 +11,7 @@ public class IFGE implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "i32.const 0 \n i32.ge_s \n br_if $" + label.toString();
     }
 }

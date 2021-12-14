@@ -9,7 +9,7 @@ public class FCONST_n implements Instruction {
         this.n = n;
     }
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "f32.const " +n;
     }
 }

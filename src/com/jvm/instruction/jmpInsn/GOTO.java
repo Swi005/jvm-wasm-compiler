@@ -10,7 +10,7 @@ public class GOTO implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "br $" + label.toString();
     }
 }

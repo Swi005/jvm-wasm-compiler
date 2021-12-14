@@ -2,8 +2,9 @@ package com.structures;
 
 public class HelloWorld
 {
-    public void HelloWorld()
+    public int HelloWorld()
     {
         int i = 1+2;
+        return i;
     }
 }

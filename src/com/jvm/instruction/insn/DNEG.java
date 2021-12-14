@@ -4,7 +4,7 @@ import com.jvm.instruction.Instruction;
 
 public class DNEG implements Instruction {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "f64.neg";
     }
 }

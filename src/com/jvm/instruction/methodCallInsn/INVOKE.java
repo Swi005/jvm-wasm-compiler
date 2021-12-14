@@ -11,7 +11,7 @@ public class INVOKE implements Instruction {
     }
 
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "call $"+name;
     }
 }

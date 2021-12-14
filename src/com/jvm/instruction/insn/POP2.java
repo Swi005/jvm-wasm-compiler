@@ -4,7 +4,7 @@ import com.jvm.instruction.Instruction;
 
 public class POP2 implements Instruction {
     @Override
-    public String getCode()
+    public String getWAT()
     {
         return "drop \n drop";
     }

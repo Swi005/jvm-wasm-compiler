@@ -5,7 +5,7 @@ import com.jvm.instruction.Instruction;
 public class FDIV implements Instruction
 {
     @Override
-    public String getCode() {
+    public String getWAT() {
         return "f32.div_s";
     }
 }
