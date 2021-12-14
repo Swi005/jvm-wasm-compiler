@@ -45,7 +45,7 @@ public class WASM_Method
             //instructions
         str.append(")\n");
         if(isPublic)
-            str.append("(export \"").append(name).append("\" (func $").append(name).append("))");
+            str.append("(export \"").append(name).append("\" (func $").append(name).append("))\n");
         return str.toString();
     }
 }

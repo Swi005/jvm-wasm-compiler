@@ -22,7 +22,8 @@ public class WASM_Writer extends FileWriter {
     public void write() throws IOException {
         //PRINT DEPENCENCIES!
         for (WASM_Method m: wasm_class.methods) {
-            super.write(m.toWAT());
+            System.out.print(m.toWAT());
+            this.append(m.toWAT());
         }
     }
 }

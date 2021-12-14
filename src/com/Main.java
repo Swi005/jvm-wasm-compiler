@@ -14,7 +14,6 @@ public class Main
     public static void main(String[] args)
     {
         String path = "target/test-classes/com/structures/HelloWorld.class";
-        String target = "bin/";
         try {
             ClassReader cr = new ClassReader(new FileInputStream(new File(path)));
             ClassNode n = new ClassNode();
@@ -22,7 +21,9 @@ public class Main
             ClassEvaluator eval = new ClassEvaluator(n);
             WASM_Class c = eval.get_Class();
             //print the class + methods
-            WASM_Writer writer = new WASM_Writer(target+ "test.wat", c);
+            File f = new File("bin/test.wat");
+            f.createNewFile();
+            WASM_Writer writer = new WASM_Writer(f, c);
             writer.write();
 
 
