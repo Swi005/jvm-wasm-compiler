@@ -96,7 +96,7 @@ public class MethodEvaluator
                 LabelNode m = (LabelNode) n;
 
                 //End last label if we see a new label
-                if(last != null)//TODO: MAY CAUSE BUG
+                if(last != null)
                     method.instructions.add(new END());
 
                 method.instructions.add(new BLOCK(m.getLabel().toString()));
@@ -104,6 +104,8 @@ public class MethodEvaluator
                 continue;
             }
         }
+        if(last != null)//Add an End() so we can close the label
+            method.instructions.add(new END());
     }
 
     /**
@@ -113,11 +115,12 @@ public class MethodEvaluator
     {
         if(node.parameters != null)
             for (int i = 0; i < node.parameters.size(); i++) {
-                ParameterNode n = (ParameterNode) node.parameters.get(i);
-                //TODO: Params
+                LocalVariableNode n = (LocalVariableNode) node.localVariables.get(i);
+                method.params.add(WasmType.fromType(Type.getType(n.desc)));
+
             }
         if(node.localVariables != null)
-            for (int i = 0; i < node.localVariables.size(); i++) {
+            for (int i = method.params.size(); i < node.localVariables.size(); i++) {
                 LocalVariableNode n = (LocalVariableNode) node.localVariables.get(i);
                 method.localVars.add(WasmType.fromType(Type.getType(n.desc)));
             }

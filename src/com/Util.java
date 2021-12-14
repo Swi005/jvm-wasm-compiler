@@ -1,10 +1,11 @@
 package com;
 
+import java.util.regex.Pattern;
+
 public class Util
 {
     public static String encodeString(String str)
     {
-        //TODO: This function
-        return str;
+        return Pattern.compile("\\^\\.\\>\\<\\/").matcher(str).replaceAll("_");
     }
 }

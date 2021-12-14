@@ -1,16 +1,12 @@
 package com.jvm.instruction;
 
-import com.jvm.instruction.fieldInsn.GETSTATIC;
-import com.jvm.instruction.fieldInsn.PUTSTATIC;
+import com.jvm.instruction.fieldInsn.*;
 import com.jvm.instruction.insn.*;
-import com.jvm.instruction.intInsn.BIPUSH;
-import com.jvm.instruction.intInsn.NEWARRAY;
-import com.jvm.instruction.intInsn.SIPUSH;
+import com.jvm.instruction.intInsn.*;
 import com.jvm.instruction.jmpInsn.*;
-import com.jvm.instruction.methodCallInsn.INVOKE;
-import com.jvm.instruction.typeInsn.ANEWARRAY;
-import com.jvm.instruction.typeInsn.INSTANCEOF;
-import com.jvm.instruction.utilInsn.UNREACHABLE;
+import com.jvm.instruction.methodCallInsn.*;
+import com.jvm.instruction.typeInsn.*;
+import com.jvm.instruction.utilInsn.*;
 import com.jvm.instruction.varInsn.*;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.Opcodes;
@@ -309,7 +305,8 @@ public class InsnFactory
     public static Instruction typeInsnFactory(int OPCODE, String type)
     {
         switch(OPCODE){
-            case Opcodes.NEW://TODO:THIS
+            case Opcodes.NEW:
+                return new INVOKE(type+"_init_");
             case Opcodes.ANEWARRAY:
                 return new ANEWARRAY(type);
             case Opcodes.CHECKCAST://TODO:THIS
@@ -326,8 +323,10 @@ public class InsnFactory
                 return new GETSTATIC(name);
             case Opcodes.PUTSTATIC:
                 return new PUTSTATIC(name);
-            case Opcodes.GETFIELD://TODO:THIS
-            case Opcodes.PUTFIELD://TODO:THIS
+            case Opcodes.GETFIELD:
+                return new GETFIELD(name);
+            case Opcodes.PUTFIELD:
+                return new PUTFIELD(name);
             default: System.err.println("ERROR: OPCODE: " + OPCODE +" IS NOT A FIELD INSTRUCTION");
             throw new IllegalStateException();
         }

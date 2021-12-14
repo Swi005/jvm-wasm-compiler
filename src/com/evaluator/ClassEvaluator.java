@@ -23,6 +23,8 @@ public class ClassEvaluator
         evalAccessFlags();
         evalFields();
         evalMethods();
+        wasm_class.generateConstructor();
+        wasm_class.generateFieldAccess();
     }
     private void evalAccessFlags()
     {

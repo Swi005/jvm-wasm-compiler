@@ -47,7 +47,7 @@ public class WASM_Class
             //GETTER
             WASM_Method get = new WASM_Method();
             get.isPublic = true;
-            get.name = className+"_get_"+str;
+            get.name = "get_"+str;
             get.params.add(WasmType.i32);
             get.returnType = fields.get(str);
             get.instructions.add(new READ("local.get 0",get.returnType));
@@ -63,16 +63,14 @@ public class WASM_Class
             methods.add(get);
         }
     }
-    public WASM_Method generateConstructor()
+    public void generateConstructor()
     {
         for (WASM_Method method: methods) {
             if(method.name.contains("init"))
             {
                 method.instructions.add(0, new MallocWrapper(this.calculatePartitionSize(), false));
-                return method;
             }
         }
-        return null;
     }
 
 }
