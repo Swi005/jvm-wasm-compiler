@@ -5,36 +5,29 @@ import org.objectweb.asm.Type;
 /**
  * Enum for all the types in wasm
  */
-public enum WasmType
-{
-    i32,
-    i64,
+public enum WasmType {
     f32,
     f64,
-    ref;
+    i32,
+    i64;
 
-    public int getSize()
-    {
-        switch (this)
-        {
+    public int getSize() {
+        switch (this) {
             case i32:
             case f32:
-            case ref:
                 return 4;
             case i64:
             case f64:
                 return 8;
             default:
-                return 0;
+                throw new IllegalStateException("Shouldn't be able to get here");
         }
     }
-    public static WasmType fromType(Type tp)
-    {
-        switch (tp.getSort())
-        {
+
+    public static WasmType fromType(Type tp) {
+        switch (tp.getSort()) {
             case Type.ARRAY:
             case Type.OBJECT:
-                return WasmType.ref;
             case Type.BOOLEAN:
             case Type.BYTE:
             case Type.SHORT:
@@ -50,7 +43,7 @@ public enum WasmType
                 return WasmType.f64;
             case Type.METHOD:
             default:
-                throw new IllegalStateException("Unexpected value: " + tp);
+                throw new IllegalArgumentException("Unexpected type: " + tp);
         }
     }
 }

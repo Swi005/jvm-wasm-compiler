@@ -1,5 +1,6 @@
 package com.evaluator;
 
+import com.Util;
 import com.jvm.instruction.WasmType;
 import com.structures.WASM_Class;
 import com.structures.WASM_Method;
@@ -18,7 +19,7 @@ public class ClassEvaluator
     {
         this.node = node;
         wasm_class = new WASM_Class();
-        wasm_class.className = node.name;
+        wasm_class.className = Util.encodeString(node.name);
         evalAccessFlags();
         evalFields();
         evalMethods();

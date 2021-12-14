@@ -1,5 +1,6 @@
 package com.evaluator;
 
+import com.Util;
 import com.jvm.instruction.InsnFactory;
 import com.jvm.instruction.WasmType;
 import com.jvm.instruction.utilInsn.BLOCK;
@@ -20,7 +21,7 @@ public class MethodEvaluator
         this.node = node;
         this.method = new WASM_Method();
 
-        method.name = node.name;
+        method.name = Util.encodeString(node.name);
         evalAnnotation();
         evalVars();
         evalInstructions();

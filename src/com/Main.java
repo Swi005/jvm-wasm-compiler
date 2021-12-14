@@ -25,6 +25,7 @@ public class Main
             f.createNewFile();
             WASM_Writer writer = new WASM_Writer(f, c);
             writer.write();
+            writer.flush();
 
 
         } catch (IOException e) {

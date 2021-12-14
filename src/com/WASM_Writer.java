@@ -11,19 +11,19 @@ public class WASM_Writer extends FileWriter {
 
     WASM_Class wasm_class;
     public WASM_Writer(String fileName, WASM_Class wasm_class) throws IOException {
-        super(new File(fileName));
+        super(new File(fileName),true);
         this.wasm_class =wasm_class;
     }
     public WASM_Writer(File file, WASM_Class wasm_class) throws IOException {
-        super(file);
+        super(file,true);
         this.wasm_class =wasm_class;
     }
 
     public void write() throws IOException {
-        //PRINT DEPENCENCIES!
+        //TODO: PRINT DEPENCENCIES!
         for (WASM_Method m: wasm_class.methods) {
             System.out.print(m.toWAT());
-            this.append(m.toWAT());
+            this.write(m.toWAT());
         }
     }
 }
