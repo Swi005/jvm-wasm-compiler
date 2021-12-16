@@ -59,12 +59,12 @@
     )
     (export "f64_dup" (func $f64_dup))
 
-    (func $get_object_type (param i32 $referance) (result i32)
+    (func $get_object_type (param $referance i32) (result i32)
         local.get $referance
         call $read_i32
         return
     )
-    (export "i64_dup" (func $i64_dup))
+    (export "get_object_type" (func $get_object_type))
 
     ;;push 0 if the two longs are the same, 1 if value1 is greater than value2, -1 otherwise
     (func $LCMP (param i64) (param i64) (result i32)
@@ -92,6 +92,7 @@
                 )
             )
         )
+        unreachable
     )
     (export "LCMP" (func $LCMP))
 )

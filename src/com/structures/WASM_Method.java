@@ -23,14 +23,13 @@ public class WASM_Method
     {
         StringBuilder str = new StringBuilder("(func $"+name+" ");
 
-        if(!isStatic){
-            str.append("(param i32 ").append("$self").append(") ");
-        }
-        for (int i = 0; i < params.size(); i++) {
-            str.append("(param ").append(params.get(i).name()).append(" $p").append(i).append(") ");
-        }
         for (int i = 0; i < localVars.size(); i++) {
-            str.append("(local ").append(localVars.get(i).name()).append(" $l").append(i).append(") ");
+            if(!isStatic && i == 0){//<-- The first var in a non static variable is the methods object
+                str.append("(param ").append(" $l").append(i).append(localVars.get(i).name()).append(") ");
+                continue;
+            }
+            //TODO: ADD some way to detect params
+            str.append("(local ").append(" $l").append(i).append(localVars.get(i).name()).append(") ");
         }
         if(returnType != null) {
             str.append("(return ").append(returnType.name()).append(") ");

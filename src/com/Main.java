@@ -13,7 +13,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        String path = "target/test-classes/com/structures/HelloWorld.class";
+        String path = "target/test-classes/com/structures/Demo.class";
         try {
             ClassReader cr = new ClassReader(new FileInputStream(new File(path)));
             ClassNode n = new ClassNode();
@@ -21,15 +21,14 @@ public class Main
             ClassEvaluator eval = new ClassEvaluator(n);
             WASM_Class c = eval.get_Class();
             //print the class + methods
-            File f = new File("bin/test.wat");
+            File f = new File("bin/demo.wat");
             //noinspection ResultOfMethodCallIgnored
             f.delete();
             //noinspection ResultOfMethodCallIgnored
             f.createNewFile();
             WASM_Writer writer = new WASM_Writer(f, c);
             writer.write();
-            writer.flush();
-
+            writer.close();
 
         } catch (IOException e) {
             e.printStackTrace();

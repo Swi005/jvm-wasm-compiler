@@ -1,0 +1,13 @@
+<script>
+    //const fs = require('fs');
+    //const { Script } = require('vm');
+    //const bytes2 = fs.readFileSync('./bin/array.wasm');
+    //const bytes3 = fs.readFileSync('./bin/demo.wasm');
+
+    (async () => {
+        const fetchPromise = fetch('./bin/demo.wasm');
+        const { instance } = await WebAssembly.instantiateStreaming(fetchPromise);
+        const result = instance.exports.foo();
+        console.log(result);
+    })();
+</script>

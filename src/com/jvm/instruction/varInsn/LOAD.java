@@ -12,6 +12,6 @@ public class LOAD implements Instruction
 
     @Override
     public String getWAT() {
-        return "local.get " + varIndex;
+        return "local.get $l" + varIndex;
     }
 }

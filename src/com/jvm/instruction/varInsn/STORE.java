@@ -11,6 +11,6 @@ public class STORE implements Instruction {
 
     @Override
     public String getWAT() {
-        return "local.set "+varIndex;
+        return "local.set $l"+varIndex;
     }
 }

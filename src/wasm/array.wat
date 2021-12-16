@@ -36,13 +36,14 @@
         call $read_i32
         return
     )
+    (export "array_size" (func $array_size))
 ;;----------------------BYTE ARRAYS------------------------------------------------;;    
     ;;Makes a new byte array
     ;;Params:
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_byte_array(param i32)(result i32)
-        (local i32 $tmp)
+        (local $tmp i32)
         local.get 0;;push arg 0 to stack
         i32.const 4;;Add header
         i32.add
@@ -50,6 +51,7 @@
         local.tee $tmp;;set 
         local.get 0
         call $write_i32
+        local.get $tmp
         return  ;;return pointer 
     )
     (export "new_byte_array" (func $new_byte_array))
@@ -90,7 +92,7 @@
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_i32_array(param i32)(result i32)
-    (local i32 $tmp)
+        (local $tmp i32)
         local.get 0;;push arg 0 to stack
         i32.const 4;;length of an i32
         i32.mul;;multiplt to get real needed size
@@ -100,6 +102,7 @@
         local.tee $tmp;;set 
         local.get 0
         call $write_i32
+        local.get $tmp
         return  ;;return pointer 
     )
     (export "new_i32_array" (func $new_i32_array))
@@ -140,7 +143,7 @@
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_i64_array(param i32)(result i32)
-        (local i32 $tmp)
+        (local $tmp i32)
         local.get 0;;push arg 0 to stack
         i32.const 8;;length of an i64
         i32.mul;;multiplt to get real needed size
@@ -150,6 +153,7 @@
         local.tee $tmp;;set 
         local.get 0
         call $write_i32
+        local.get $tmp
         return  ;;return pointer 
     )
     (export "new_i64_array" (func $new_i64_array))
@@ -191,7 +195,7 @@
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_f32_array(param i32)(result i32)
-        (local i32 $tmp)
+        (local $tmp i32)
         local.get 0;;push arg 0 to stack
         i32.const 4;;length of an f32
         i32.mul;;multiplt to get real needed size
@@ -201,6 +205,7 @@
         local.tee $tmp;;set 
         local.get 0
         call $write_i32
+        local.get $tmp
         return  ;;return pointer 
     )
     (export "new_f32_array" (func $new_f32_array))
@@ -241,7 +246,7 @@
     ;; 0:number of elems in array
     ;; Return: Pointer to array
     (func $new_f64_array(param i32)(result i32)
-        (local i32 $tmp)
+        (local $tmp i32)
         local.get 0;;push arg 0 to stack
         i32.const 8;;length of an f64
         i32.mul;;multiplt to get real needed size
@@ -251,6 +256,7 @@
         local.tee $tmp;;set 
         local.get 0
         call $write_i32
+        local.get $tmp
         return  ;;return pointer 
     )
     (export "new_f64_array" (func $new_f64_array))
